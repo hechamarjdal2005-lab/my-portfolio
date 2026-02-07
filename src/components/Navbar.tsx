@@ -97,7 +97,7 @@ const Navbar = () => {
               onClick={handleNavClick}
             >
               <img 
-                src="/src/assets/logo.png" 
+                src="https://i.ibb.co/vxd5Tn7D/Chat-GPT-Image-Feb-6-2026-07-29-31-PM.png" 
                 alt="Logo" 
                 className="h-16 sm:h-20 w-auto object-contain"
                 onError={(e) => {
