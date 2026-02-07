@@ -71,7 +71,7 @@ const LoadingScreenTypewriter = () => {
                 transition={{ duration: 0.6 }}
               >
                 <img
-                  src="/src/assets/logo.png"
+                  src="https://i.ibb.co/vxd5Tn7D/Chat-GPT-Image-Feb-6-2026-07-29-31-PM.png"
                   alt="Logo"
                   className="w-32 h-32 object-contain"
                   onError={(e) => {
