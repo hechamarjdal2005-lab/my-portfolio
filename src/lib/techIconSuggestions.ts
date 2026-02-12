@@ -161,6 +161,11 @@ export const techIcons: TechIcon[] = [
   // Operating Systems
   { name: "Linux", iconName: "SiLinux", color: "#FCC624", category: "OS", keywords: ["linux", "unix"] },
   { name: "Ubuntu", iconName: "SiUbuntu", color: "#E95420", category: "OS", keywords: ["ubuntu"] },
+  
+  // Data Formats & Modeling
+  { name: "JSON", iconName: "SiJson", color: "#000000", category: "Data", keywords: ["json", "javascript object notation"] },
+  { name: "XML", iconName: "SiXml", color: "#005FAD", category: "Data", keywords: ["xml", "extensible markup language"] },
+  { name: "UML", iconName: "SiUml", color: "#FABD14", category: "Modeling", keywords: ["uml", "unified modeling language", "diagram", "modeling"] },
 ];
 
 /**
