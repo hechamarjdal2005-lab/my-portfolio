@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
-import { X, Menu, Moon, Sun } from "lucide-react";
+import { X, Menu, Moon, Sun, LogIn } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const navItems = [
   { label: "Home", href: "#home" },
@@ -22,11 +23,12 @@ const Navbar = () => {
     return false;
   });
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
 
-      // Update active section based on scroll position
       const sections = navItems.map((item) => item.href.slice(1));
       const current = sections.find((section) => {
         const element = document.getElementById(section);
@@ -43,7 +45,6 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Theme toggle effect
   useEffect(() => {
     const root = document.documentElement;
     if (isDark) {
@@ -55,17 +56,19 @@ const Navbar = () => {
     }
   }, [isDark]);
 
-  // Close mobile menu when clicking on a link
   const handleNavClick = () => {
     setMobileMenuOpen(false);
   };
 
-  // Toggle theme
   const toggleTheme = () => {
     setIsDark(!isDark);
   };
 
-  // Prevent body scroll when mobile menu is open
+  const handleLoginClick = () => {
+    setMobileMenuOpen(false);
+    navigate("/hechamarj-port-05-bri");
+  };
+
   useEffect(() => {
     if (mobileMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -108,13 +111,12 @@ const Navbar = () => {
                   }
                 }}
               />
-              {/* Fallback النص القديم إذا ما خدماتش الصورة */}
               <span className="text-xl sm:text-2xl font-bold gradient-text hidden">
                 &lt;Dev /&gt;
               </span>
             </motion.a>
 
-            {/* Desktop Nav Links & Theme Toggle */}
+            {/* Desktop Nav Links & Buttons */}
             <div className="hidden md:flex items-center gap-8">
               {navItems.map((item, index) => (
                 <motion.a
@@ -140,6 +142,20 @@ const Navbar = () => {
                 </motion.a>
               ))}
               
+              {/* Login Button - Desktop */}
+              <motion.button
+                onClick={handleLoginClick}
+                className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium border border-primary/40 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 + navItems.length * 0.1 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <LogIn className="w-4 h-4" />
+                Login
+              </motion.button>
+
               {/* Desktop Theme Toggle */}
               <motion.button
                 onClick={toggleTheme}
@@ -248,6 +264,19 @@ const Navbar = () => {
                     {item.label}
                   </motion.a>
                 ))}
+
+                {/* Login Button - Mobile */}
+                <motion.button
+                  onClick={handleLoginClick}
+                  className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-base font-medium border border-primary/40 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 mt-2"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: navItems.length * 0.1 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <LogIn className="w-5 h-5" />
+                  Login
+                </motion.button>
               </div>
             </motion.div>
           </motion.div>
